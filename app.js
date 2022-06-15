@@ -124,7 +124,7 @@ app.post("/admin/rem", async (req, res) => {
         if (err)
           return console.error(err);
 
-        console.log('User successfully removed from polls collection!');
+        console.log(`[CON] [POST] User tied with the email ${req.body.email} was successfully removed`);
         res.status(200).send("User Deleted");
       })
 })
