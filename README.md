@@ -4,7 +4,8 @@
 
 # 🍺 Node-API-Backend
 
-Node User backend api that can be used as an auth including hashed passwords
+Using Express, Mongoose, Bcrypt, and Node.js, 
+I'm currently working on a backend for an authentication system that will feature hashed passwords and numerous checks.
 
 # ⚙️ Configuration
 
@@ -17,7 +18,7 @@ PORT = 1337
 
 Install Node.js **[Link](https://nodejs.org/en/download/)**
 
-Do These Steps in a Terminal Type Enviroment
+Follow these instructions in a terminal environment.
 
 ```bash
 # Goto Dir
@@ -33,7 +34,7 @@ $ node app.js
 
 # 📜 API End Points
 
-> Note: For post just make a json body req using the values that are the same as the GET reqs
+> Note: Simply create a json body request for posts using the same values as the GET requests.
 
 ## API
 
@@ -55,6 +56,6 @@ $ node app.js
 
 `http://SERVER:1337/admin/rem (POST)`
 
-> Note: Make a post req `{ email: "test@gmail.com" }` will remove the account tied to the email
+> Note: Making a post request with the query `{email: "test@gmail.com"}` will delete the associated account.
 
 
