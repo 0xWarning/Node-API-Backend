@@ -40,10 +40,10 @@ $ node app.js
 
 - 🖥️ Register
 
-`/register`
+`http://SERVER:1337/register` (POST)
 
 - 🖥️ Login
 
-`/login`
+`http://SERVER:1337/login` (POST)
 
 
