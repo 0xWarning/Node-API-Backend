@@ -49,4 +49,12 @@ $ node app.js
 
 `http://SERVER:1337/login/:email/:password (GET)`
 
+## ADMIN API
+
+- 🖥️ Remove User
+
+`http://SERVER:1337/admin/rem (POST)`
+
+> Note: Make a post req `{ email: "test@gmail.com" }` will remove the account tied to the email
+
 
