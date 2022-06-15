@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="248" height="248" src="https://png.pngtree.com/element_our/20200702/ourmid/pngtree-web-server-vector-icon-image_2289946.jpg">
+  <img width="248" height="248" src="https://raw.githubusercontent.com/0xWarning/Node-API-Backend/main/icon.png">
 </p>
 
 # 🍺 Node-API-Backend
