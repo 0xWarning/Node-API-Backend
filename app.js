@@ -113,19 +113,19 @@ app.post("/login", async (req, res) => {
 
 // Post Remove User
 
-app.post("/rem", async (req, res) => {
+app.post("/admin/rem", async (req, res) => {
 
     const user = await User.findOne({email: req.body.email});
     if(!user) return res.status(400).send('User does not exists');
 
-    User.remove({
+    User.deleteOne({
         email: req.body.email
     }, function (err, user) {
         if (err)
           return console.error(err);
 
         console.log('User successfully removed from polls collection!');
-        res.status(200).send();
+        res.status(200).send("User Deleted");
       })
 })
 
