@@ -1,10 +1,10 @@
 <p align="center">
-  <img width="248" height="248" src="https://img.lovepik.com/element/45003/7338.png_300.png">
+  <img width="248" height="248" src="https://png.pngtree.com/element_our/20200702/ourmid/pngtree-web-server-vector-icon-image_2289946.jpg">
 </p>
 
 # 🍺 Node-API-Backend
 
- Just a regular discord bot. I PROMISE!
+Node User backend api that can be used as an auth including hashed passwords
 
 # ⚙️ Configuration
 
@@ -33,17 +33,18 @@ $ node app.js
 
 # 📜 API End Points
 
-> Note: The default prefix is '$'
-> | This can be changed in the config.json file
+> Note: For post just make a json body req using the values that are the same as the GET reqs
 
 ## API
 
 - 🖥️ Register
 
-`http://SERVER:1337/register` (POST)
+`http://SERVER:1337/register (POST)`
+`http://SERVER:1337/register/:name/:email/:password/:registedwip/:referral (GET)`
 
 - 🖥️ Login
 
-`http://SERVER:1337/login` (POST)
+`http://SERVER:1337/login (POST)`
+`http://SERVER:1337/login/:email/:password (GET)`
 
 
