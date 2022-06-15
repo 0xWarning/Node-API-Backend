@@ -40,11 +40,13 @@ $ node app.js
 - 🖥️ Register
 
 `http://SERVER:1337/register (POST)`
+
 `http://SERVER:1337/register/:name/:email/:password/:registedwip/:referral (GET)`
 
 - 🖥️ Login
 
 `http://SERVER:1337/login (POST)`
+
 `http://SERVER:1337/login/:email/:password (GET)`
 
 
