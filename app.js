@@ -1,8 +1,9 @@
 //Required
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
-const User = require("./modal/user")
+const User = require("./modal/user");
 
 const app = express();
 
@@ -25,11 +26,10 @@ app.get("/register/:name/:email/:password/:registedwip/:referral", async (req, r
         // if(userExist) return res.status(400).send('Username already taken')
  
          const emailExist = await User.findOne({email: req.params['email']});
-         if(emailExist) return res.status(400).send('Email already exists')
+         if(emailExist) return res.status(400).send('Email already exists');
  
          const salt = await bcrypt.genSalt(10);
-         const hashPassword = await bcrypt.hash(req.params['password'], salt)
- 
+         const hashPassword = await bcrypt.hash(req.params['password'], salt);
          const myuser = new User({
              name: req.params['name'],
              email: req.params['email'],
@@ -58,10 +58,10 @@ app.post("/register", async (req, res) => {
        // if(userExist) return res.status(400).send('Username already taken')
 
         const emailExist = await User.findOne({email: req.body.email});
-        if(emailExist) return res.status(400).send('Email already exists')
+        if(emailExist) return res.status(400).send('Email already exists');
 
         const salt = await bcrypt.genSalt(10);
-        const hashPassword = await bcrypt.hash(req.body.password, salt)
+        const hashPassword = await bcrypt.hash(req.body.password, salt);
 
         const myuser = new User({
             name: req.body.name,
@@ -93,7 +93,9 @@ app.get("/login/:email/:password", async (req, res) => {
     const validPass = await bcrypt.compare(req.params['password'], user.password);
     if(!validPass) return res.status(400).send('Password is wrong');
 
-    res.send('logged in')
+    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+
+    res.send(`logged in ${token}`);
     console.log(`[CON] [GET] ${user.name} has logged in`);
 })
 
@@ -107,7 +109,9 @@ app.post("/login", async (req, res) => {
         const validPass = await bcrypt.compare(req.body.password, user.password);
         if(!validPass) return res.status(400).send('Password is wrong');
 
-        res.send('logged in')
+        const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+
+        res.send(`logged in ${token}`);
         console.log(`[CON] [POST] ${user.name} has logged in`);
 })
 
@@ -141,5 +145,5 @@ mongoose.connect(
 // Listen on port
 
 app.listen(process.env.PORT, () => {
-    console.log(`Listening on ${process.env.PORT}`)
+    console.log(`Listening on ${process.env.PORT}`);
 })
