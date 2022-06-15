@@ -114,7 +114,7 @@ app.post("/login", async (req, res) => {
 // Post Remove User
 
 app.post("/admin/rem", async (req, res) => {
-
+    // At the moment anyone can execute this but that will change
     const user = await User.findOne({email: req.body.email});
     if(!user) return res.status(400).send('User does not exists');
 
