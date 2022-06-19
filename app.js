@@ -145,7 +145,7 @@ app.post("/admin/rem", async (req, res) => {
       })
 })
 
-app.post('/upload-avatar', async (req, res) => {
+app.post('/upload-file', async (req, res) => {
     try {
         if(!req.files) {
             res.send({
@@ -153,20 +153,20 @@ app.post('/upload-avatar', async (req, res) => {
                 message: 'No file uploaded'
             });
         } else {
-            //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
-            let avatar = req.files.avatar;
+            //Use the name of the input field (i.e. "file") to retrieve the uploaded file
+            let file = req.files.file;
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv('./uploads/' + avatar.name);
+            file.mv('./uploads/' + file.name);
 
             //send response
             res.send({
                 status: true,
                 message: 'File is uploaded',
                 data: {
-                    name: avatar.name,
-                    mimetype: avatar.mimetype,
-                    size: avatar.size
+                    name: file.name,
+                    mimetype: file.mimetype,
+                    size: file.size
                 }
             });
 
