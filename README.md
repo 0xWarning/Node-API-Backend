@@ -14,6 +14,7 @@ This is till project is not yet complete
 ```dotenv
 DB_CON_STRING = MONGO-DB-CON-LINK-HERE
 PORT = 1337
+TOKEN_SECRET = SALTYTOKENS
 ```
 
 # ⚡ Getting Started
