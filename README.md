@@ -57,11 +57,12 @@ $ node app.js
 - 🖥️ Upload
 
 `http://SERVER:1337/upload (POST)`
-
+> Note: Check the response
 
 - 🖥️ Upload List
 
 `http://SERVER:1337/upload/list (GET)`
+> Note: Returns json array list
 
 
 ## ADMIN API
