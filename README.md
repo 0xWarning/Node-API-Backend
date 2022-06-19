@@ -12,9 +12,9 @@ This is till project is not yet complete
 # ⚙️ Configuration
 
 ```dotenv
-DB_CON_STRING = MONGO-DB-CON-LINK-HERE
 PORT = 1337
 TOKEN_SECRET = SALTYTOKENS
+DB_CON_STRING = MONGO-DB-CON-LINK-HERE
 ```
 
 # ⚡ Getting Started
