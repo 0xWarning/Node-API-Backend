@@ -9,6 +9,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const _ = require('lodash');
+const fs = require('fs');
 
 const app = express();
 app.use(express.static('uploads'));
@@ -27,6 +28,18 @@ app.use(morgan('dev'));
 
 app.get("/", (req, res) => {
     res.send("You have found our api !");
+})
+
+app.get("/upload/list", (req, res) => {
+    fs.readdir('./uploads', (err, files) => {
+        if (err) {
+          return console.error(err);
+        }
+        console.log(files);
+        res.send(files);
+        // ["file1.txt", "file2.txt", "file3.txt", "index.js"]
+      });
+     // res.send("no");
 })
 
 
@@ -145,7 +158,7 @@ app.post("/admin/rem", async (req, res) => {
       })
 })
 
-app.post('/upload-file', async (req, res) => {
+app.post('/upload', async (req, res) => {
     try {
         if(!req.files) {
             res.send({

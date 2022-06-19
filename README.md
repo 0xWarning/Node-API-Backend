@@ -53,6 +53,17 @@ $ node app.js
 
 `http://SERVER:1337/login/:email/:password (GET)`
 
+
+- 🖥️ Upload
+
+`http://SERVER:1337/upload (POST)`
+
+
+- 🖥️ Upload List
+
+`http://SERVER:1337/upload/list (GET)`
+
+
 ## ADMIN API
 
 - 🖥️ Remove User
