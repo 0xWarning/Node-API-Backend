@@ -8,7 +8,9 @@ Using Express, Mongoose, Bcrypt, and Node.js,
 I'm currently working on a backend for an authentication system that features hashed passwords, JWT and numerous checks.
 
 Current JWT Protected Endpoints (requires a login to get a jwt token)
+
 `ADMIN`
+
 `FILES`
 
 This is till project is not yet complete
