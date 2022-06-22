@@ -81,4 +81,6 @@ $ node app.js
 
 > Note: Making a post request with the query `{email: "test@gmail.com"}` will delete the associated account.
 
+> Make sure to include your `CUSTOM_HEADER` and `CUSTOM_HEADER_VALUE` in the header of the request
+
 
