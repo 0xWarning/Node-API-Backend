@@ -18,10 +18,10 @@ const registerValidation = (data) => {
 const loginValidation = (data) => {
     const schema = {
         email: Joi.string()
-            .min(0)
+            .min(6)
             .required(),
         password: Joi.string()
-            .min(0)
+            .min(6)
             .required()
     };
     return Joi.valid(data, schema)
