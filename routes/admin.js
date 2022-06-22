@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../modal/user');
 const verify = require('../util/verifyToken');
 const file = require('../modal/file');
+const fs = require('fs');
 // If no auth-token this won't work
 
 router.get('/', verify, (req,res) => {
@@ -44,9 +45,17 @@ router.post("/remove_file", verify, async (req, res) => {
         if (err)
           return console.error(err);
 
+          fs.unlink('./uploads/' + req.body.gname, (err) => {
+            if (err) throw err //handle your error the way you want to;
+            console.log('path/file.txt was deleted');//or else the file will be deleted
+              });
+        
         console.log(`[CON] [POST] ${req.body.gname} was successfully removed`);
         res.status(200).send("File Deleted");
       })
+
+
+      
     }
     else
     {
