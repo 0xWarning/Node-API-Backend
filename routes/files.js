@@ -3,7 +3,7 @@ const user = require('../modal/user');
 const fileReq = require('../modal/file');
 const verify = require('../util/verifyToken');
 const fs = require('fs');
-
+var MongoClient = require('mongodb').MongoClient;
 // If no auth-token this won't work
 
 router.get('/', verify, (req,res) => {
@@ -46,6 +46,7 @@ router.post('/upload', verify, async (req, res) => {
 
 
 router.post('/upload_db', verify, async (req, res) => {
+
     try {
         if(!req.files) {
             res.send({
@@ -53,9 +54,12 @@ router.post('/upload_db', verify, async (req, res) => {
                 message: 'No file uploaded'
             });
         } else {
+
             //Use the name of the input field (i.e. "file") to retrieve the uploaded file
             let file = req.files.file;
+
             
+
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
             file.mv('./uploads/' + file.name);
 
@@ -84,15 +88,15 @@ router.post('/upload_db', verify, async (req, res) => {
 
 
 router.get("/list", verify, (req, res) => {
-    fs.readdir('./uploads', (err, files) => {
-        if (err) {
-          return console.error(err);
-        }
-        console.log(files);
-        res.send(files);
-        // ["file1.txt", "file2.txt", "file3.txt", "index.js"]
+    MongoClient.connect(process.env.DB_CON_STRING, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("test");
+        dbo.collection("files").find({}, { projection: { _id: 0, name: 1, description: 1, size: 1, type: 1 } }).toArray(function(err, result) {
+          if (err) throw err;
+          res.send(result);
+          db.close();
+        });
       });
-     // res.send("no");
 })
 
 

@@ -86,3 +86,13 @@ $ node app.js
 > Make sure to include your `CUSTOM_HEADER` and `CUSTOM_HEADER_VALUE` in the header of the request
 
 
+- 🖥️ Remove File
+
+`http://SERVER:1337/api/admin/remove_file (POST)`
+
+> Note: Making a post request with the query `{name: "test.txt"}` will delete the associated file.
+
+> Make sure to include your `CUSTOM_HEADER` and `CUSTOM_HEADER_VALUE` in the header of the request
+
+
+

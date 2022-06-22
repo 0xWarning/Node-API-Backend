@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const user = require('../modal/user');
+const User = require('../modal/user');
 const verify = require('../util/verifyToken');
-
+const file = require('../modal/file');
 // If no auth-token this won't work
 
 router.get('/', verify, (req,res) => {
@@ -31,6 +31,29 @@ router.post("/remove_user", verify, async (req, res) => {
         res.status(200).send("Authorisation Error");
     }
 })
+
+router.post("/remove_file", verify, async (req, res) => {
+    if (req.header(process.env.CUSTOM_HEADER) == process.env.CUSTOM_HEADER_VALUE) {
+    // If req has customer header and value allow the delete
+        const fileReq2 = await file.findOne({name: req.body.gname});
+        if(!fileReq2) return res.status(400).send('File does not exists');
+
+        file.deleteOne({
+            name: req.body.gname,
+        }, function (err, file) {
+        if (err)
+          return console.error(err);
+
+        console.log(`[CON] [POST] ${req.body.gname} was successfully removed`);
+        res.status(200).send("File Deleted");
+      })
+    }
+    else
+    {
+        res.status(200).send("Authorisation Error");
+    }
+})
+
 
 
 module.exports = router;

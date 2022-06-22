@@ -83,7 +83,7 @@ router.get("/login/:email/:password", async (req, res) => {
     if(!validPass) return res.status(400).send('Password is wrong');
 
     const token = jwt.sign({_id: user._id, name: user.name, email: user.email}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(`logged in ${token}`);
+    res.header('auth-token', token).send(`logged in |${token}`);
    // res.send(`logged in ${token}`);
     console.log(`[CON] [GET] ${user.name} has logged in`);
 })
