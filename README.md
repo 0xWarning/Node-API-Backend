@@ -40,6 +40,7 @@ $ node app.js
 # 📜 API End Points
 
 > Note: Simply create a json body request for posts using the same values as the GET requests.
+> Most endpoints may require the `auth-token` header to be set which you get after you login
 
 ## API
 
