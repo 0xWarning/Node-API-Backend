@@ -51,25 +51,25 @@ $ node app.js
 
 - 🖥️ Register
 
-`http://SERVER:1337/register (POST)`
+`http://SERVER:1337/api/user/register (POST)`
 
-`http://SERVER:1337/register/:name/:email/:password/:registedwip/:referral (GET)`
+`http://SERVER:1337/api/user/register/:name/:email/:password/:registedwip/:referral (GET)`
 
 - 🖥️ Login
 
-`http://SERVER:1337/login (POST)`
+`http://SERVER:1337/api/user/login (POST)`
 
-`http://SERVER:1337/login/:email/:password (GET)`
+`http://SERVER:1337/api/user/login/:email/:password (GET)`
 
 
 - 🖥️ Upload
 
-`http://SERVER:1337/upload (POST)`
+`http://SERVER:1337/api/files/upload (POST)`
 > Note: Check the response
 
 - 🖥️ Upload List
 
-`http://SERVER:1337/upload/list (GET)`
+`http://SERVER:1337/api/files/list (GET)`
 > Note: Returns json array list
 
 
@@ -77,7 +77,7 @@ $ node app.js
 
 - 🖥️ Remove User
 
-`http://SERVER:1337/admin/rem (POST)`
+`http://SERVER:1337/api/admin/remove_user (POST)`
 
 > Note: Making a post request with the query `{email: "test@gmail.com"}` will delete the associated account.
 
