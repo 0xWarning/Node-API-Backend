@@ -143,19 +143,25 @@ app.post("/login", async (req, res) => {
 // Post Remove User
 
 app.post("/admin/rem", async (req, res) => {
-    // At the moment anyone can execute this but that will change
-    const user = await User.findOne({email: req.body.email});
-    if(!user) return res.status(400).send('User does not exists');
+    // If req has customer header and value allow the delete
+    if (req.header(process.env.CUSTOM_HEADER) == process.env.CUSTOM_HEADER_VALUE) {
+        const user = await User.findOne({email: req.body.email});
+        if(!user) return res.status(400).send('User does not exists');
 
-    User.deleteOne({
-        email: req.body.email
-    }, function (err, user) {
+        User.deleteOne({
+            email: req.body.email
+        }, function (err, user) {
         if (err)
           return console.error(err);
 
         console.log(`[CON] [POST] User tied with the email ${req.body.email} was successfully removed`);
         res.status(200).send("User Deleted");
       })
+    }
+    else
+    {
+        res.status(200).send("Authorisation Error");
+    }
 })
 
 app.post('/upload', async (req, res) => {
