@@ -18,6 +18,10 @@ const File = new mongoose.Schema({
         type: String,  
         required: false,
     },
+    upload_by: {
+        type: String,  
+        required: true,
+    },
 
 });
 
