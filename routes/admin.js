@@ -24,6 +24,7 @@ router.post("/remove_user", verify, async (req, res) => {
           return console.error(err);
 
         console.log(`[CON] [POST] User tied with the email ${req.body.email} was successfully removed`);
+
         res.status(200).send("User Deleted");
       })
     }
@@ -50,7 +51,7 @@ router.post("/remove_file", verify, async (req, res) => {
             console.log('path/file.txt was deleted');//or else the file will be deleted
               });
         
-        console.log(`[CON] [POST] ${req.body.gname} was successfully removed`);
+        console.log("Successfully".green + " removed ".red + `${req.body.gname}`.cyan);
         res.status(200).send("File Deleted");
       })
 
