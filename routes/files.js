@@ -58,7 +58,8 @@ router.post('/upload_db', verify, async (req, res) => {
             //Use the name of the input field (i.e. "file") to retrieve the uploaded file
             let file = req.files.file;
 
-            
+             const fileExist = await fileReq.findOne({name: file.name});
+             if(fileExist) return res.status(400).send('File already exists')
 
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
             file.mv('./uploads/' + file.name);
