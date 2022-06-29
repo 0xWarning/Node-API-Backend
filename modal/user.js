@@ -17,7 +17,7 @@ const User = new mongoose.Schema({
     },
     // For now we only want users with a referral code to signup
     referral: {
-        type: String,  
+        type: String,
         required: true,
     },
     // Coming Soon (Check registered IP against current login ip or reg ip)

@@ -31,36 +31,26 @@ app.get("/", (req, res) => {
 })
 
 
-// Connect DB
+// Connect to DB
 
 mongoose.connect(
     process.env.DB_CON_STRING,
-    { useUnifiedTopology: true, useNewUrlParser: true},
-    (req,res) =>{
-    console.log("Connected".green + " to".gray + " mongoDB".cyan);
-    // console.log(`Successfully uploaded the file`.bgGreen);
-    // console.log(`Failed to upload the file`.bgRed);
-
-    // console.log(`Successfully deleted the file`.bgGreen);
-    // console.log(`Failed to delete the file`.bgRed);
-
-    // console.log(`Successfully created the user`.bgYellow);
-    // console.log(`Successfully deleted the user`.bgWhite);
-    // console.log(`User Not Found`.bgCyan);
-
-    // console.log(`User has logged in`.bgBlack.yellow);
-    // console.log(`User has failed to logged`.bgBlack.red);
-})
+    { useUnifiedTopology: true, useNewUrlParser: true },
+    (req, res) => {
+        console.log("Connected".green + " to".gray + " mongoDB".cyan);
+    })
 
 // Import Routes
 const adminRoute = require('./routes/admin')
 const authRoute = require('./routes/auth')
 const filesRoute = require('./routes/files')
+const secretRoute = require('./routes/secret')
 
 // Route Middlewares
 app.use('/api/admin', adminRoute);
 app.use('/api/user', authRoute);
 app.use('/api/files', filesRoute);
+app.use('/api/secret', secretRoute);
 
 // Listen on port
 app.listen(process.env.PORT, () => {
