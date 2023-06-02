@@ -20,6 +20,7 @@ router.get("/register/:name/:email/:password/:registedwip/:referral", async (req
 
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(req.params['password'], salt);
+        const hashEmail = await bcrypt.hash(req.params['email'], salt);
         const myuser = new User({
             name: req.params['name'],
             email: req.params['email'],
@@ -55,6 +56,7 @@ router.post("/register", async (req, res) => {
         // Salt + HASH the password
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(req.body.password, salt);
+        const hashEmail = await bcrypt.hash(req.body.email, salt);
 
         // Serialise request data
         const myuser = new User({

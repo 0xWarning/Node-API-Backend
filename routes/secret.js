@@ -3,6 +3,7 @@ const verify = require('../util/verifyToken');
 const file = require('../modal/file');
 const devn = require('../modal/devNotes');
 const devNotes = require('../modal/devNotes');
+const Chat = require('../modal/chat');
 var MongoClient = require('mongodb').MongoClient;
 
 router.get('/', verify, (req, res) => {
@@ -44,6 +45,41 @@ router.get('/dev_notes', verify, async (req, res) => {
         });
     });
     console.log(`Dev notes have been viewed `.yellow);
+
+});
+
+
+router.get('/chat_log', verify, async (req, res) => {
+
+    MongoClient.connect(process.env.DB_CON_STRING, function (err, db) { // Connect to db
+        if (err) throw err;
+        var dbo = db.db("test"); // Selec DB Test
+        // Find table files and required params
+        dbo.collection("chats").find({}, { projection: { _id: 0, author: 1, timestamp: 1, message: 1 } }).toArray(function (err, result) {
+            if (err) throw err;
+            res.send(result); // Return result
+            db.close(); // close db
+        });
+    });
+    console.log(`chat logs have been viewed `.yellow);
+
+});
+
+router.post('/submit_chat_log', verify, async (req, res) => {
+
+   // const issue = await Chat.findOne({ issue: req.body.issue });
+    //if (issue) return res.status(400).send('Issue with the suppplied name has already been reported');
+
+
+    const mychat = new Chat({
+        author: req.body['author'],
+        timestamp: req.body['timestamp'],
+        message: req.body['message'],
+    });
+
+    await mychat.save();
+    res.send(mychat);
+    console.log(`chat message submitted`.yellow);
 
 });
 
