@@ -111,6 +111,8 @@ $ node app.js
 
 `http://SERVER:1337/api/secret/submit_dev_note (POST)`
 
+- 🖥️ Chat API/LOG
+
 `http://SERVER:1337/api/secret/chat_log (GET)`
 
 `http://SERVER:1337/api/secret/submit_chat_log (POST)`
